@@ -1,0 +1,43 @@
+{
+  "_source": "Transcribed from the Kaggle run logs of notebook anishamehajabin/localizing-gemma-4-agents-via-ast-guided-retrieval: Version 3 (Gemma 4 E2B, 19,016 s) and Version 4 (Gemma 4 E4B, 25,752 s), both on GPU T4 x2. Full per-attempt records (results.jsonl, including model responses and patches) are in each version's Output tab. Format: condition -> {task number: attempts used} for RESOLVED tasks only; every unresolved task used 1 attempt in single-attempt conditions and 3 in self-correcting ones.",
+  "benchmark": "benchmarks/boltons (boltons 26.2.0, 50 tasks, mutate seed 0)",
+  "summary": {
+    "e2b": {
+      "file":         {"tokens_per_task": 7927,  "model_s_per_task": 41.5,  "file_hit": 0.94, "symbol_hit": 0.74, "context_tokens": 5996},
+      "ast_graph":    {"tokens_per_task": 8823,  "model_s_per_task": 47.2,  "file_hit": 1.00, "symbol_hit": 0.88, "context_tokens": 5997},
+      "ast_graph_sc": {"tokens_per_task": 27374, "model_s_per_task": 105.8, "file_hit": 1.00, "symbol_hit": 0.88, "context_tokens": 5997},
+      "full":         {"tokens_per_task": 27455, "model_s_per_task": 108.2, "file_hit": 1.00, "symbol_hit": 0.88, "context_tokens": 5997},
+      "oracle":       {"tokens_per_task": 8670,  "model_s_per_task": 44.3,  "file_hit": 1.00, "symbol_hit": 1.00, "context_tokens": 5996}
+    },
+    "e4b": {
+      "file":         {"tokens_per_task": 7765,  "model_s_per_task": 53.9,  "file_hit": 0.94, "symbol_hit": 0.74, "context_tokens": 5996},
+      "ast_graph":    {"tokens_per_task": 8561,  "model_s_per_task": 51.7,  "file_hit": 1.00, "symbol_hit": 0.88, "context_tokens": 5997},
+      "ast_graph_sc": {"tokens_per_task": 23112, "model_s_per_task": 144.7, "file_hit": 1.00, "symbol_hit": 0.88, "context_tokens": 5997},
+      "full":         {"tokens_per_task": 22952, "model_s_per_task": 143.0, "file_hit": 1.00, "symbol_hit": 0.88, "context_tokens": 5997},
+      "oracle":       {"tokens_per_task": 8423,  "model_s_per_task": 48.4,  "file_hit": 1.00, "symbol_hit": 1.00, "context_tokens": 5996}
+    }
+  },
+  "resolved": {
+    "e2b": {
+      "file": {"7": 1, "36": 1},
+      "ast_graph": {"3": 1},
+      "ast_graph_sc": {"1": 2, "3": 1, "25": 3, "36": 2},
+      "full": {"1": 2, "3": 1, "25": 3, "28": 3, "36": 2},
+      "oracle": {"36": 1, "38": 1, "48": 1}
+    },
+    "e4b": {
+      "file": {"3": 1, "7": 1, "8": 1, "9": 1, "10": 1, "12": 1, "22": 1, "23": 1, "25": 1, "27": 1, "36": 1, "43": 1, "48": 1, "49": 1},
+      "ast_graph": {"2": 1, "3": 1, "7": 1, "8": 1, "12": 1, "20": 1, "27": 1, "29": 1, "32": 1, "33": 1, "36": 1, "40": 1, "48": 1},
+      "ast_graph_sc": {"1": 2, "2": 1, "3": 1, "6": 3, "7": 1, "8": 1, "12": 1, "13": 2, "20": 1, "27": 1, "29": 1, "32": 1, "33": 1, "34": 3, "36": 1, "40": 1, "43": 2, "47": 3, "48": 1},
+      "full": {"1": 2, "2": 1, "3": 1, "6": 3, "7": 1, "8": 1, "12": 1, "13": 2, "20": 1, "27": 1, "28": 3, "29": 1, "32": 1, "33": 1, "34": 3, "36": 1, "40": 1, "41": 2, "47": 3, "48": 1, "49": 2},
+      "oracle": {"3": 1, "7": 1, "8": 1, "9": 1, "12": 1, "18": 1, "20": 1, "21": 1, "27": 1, "29": 1, "32": 1, "33": 1, "36": 1, "40": 1, "42": 1, "48": 1, "50": 1}
+    }
+  },
+  "task_kinds": {
+    "1": "constant", "2": "boolean", "3": "compare", "4": "arith", "5": "constant", "6": "arith", "7": "negation", "8": "compare", "9": "compare", "10": "negation",
+    "11": "arith", "12": "compare", "13": "negation", "14": "arith", "15": "negation", "16": "compare", "17": "constant", "18": "constant", "19": "boolean", "20": "arith",
+    "21": "constant", "22": "arith", "23": "constant", "24": "negation", "25": "compare", "26": "constant", "27": "boolean", "28": "constant", "29": "compare", "30": "compare",
+    "31": "compare", "32": "constant", "33": "arith", "34": "constant", "35": "boolean", "36": "constant", "37": "arith", "38": "constant", "39": "arith", "40": "negation",
+    "41": "constant", "42": "negation", "43": "negation", "44": "constant", "45": "arith", "46": "boolean", "47": "arith", "48": "arith", "49": "arith", "50": "constant"
+  }
+}

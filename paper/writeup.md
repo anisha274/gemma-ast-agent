@@ -115,6 +115,8 @@ We needed many bugs with known locations in a codebase larger than the context b
 
 ## 6. Analysis
 
+**Why single attempts fail.** Most failures are wrong fixes, not formatting problems. Of the 36 whole-file failures for E4B, 25 were patches that applied cleanly but failed the tests, 7 could not be applied, and 4 contained no edit block (AST retrieval: 30, 3 and 4 of 37). Across all self-correcting runs, about three in four failed attempts were clean but wrong patches, which is exactly the kind of failure a test result can correct.
+
 **By mutation operator (E4B).** Self-correction gains are concentrated in wrong constants (whole-file 2/15, full 6/15) and arithmetic swaps (3/13 vs 6/13). Comparison flips are the easiest single-attempt category (whole-file 5/9) and do not improve (full 4/9). One plausible reading: a wrong constant or operator rarely looks wrong in isolation, but a failing assertion with the expected and actual values points straight at it. A flipped comparison is either recognized immediately or not at all.
 
 **Unsolved tasks.** 19 of 50 tasks are solved by no E4B condition. Nine of them sit in stateful container and stream classes (`IndexedSet` internals, `BarrelList.iter_slice`, `SpooledStringIO`, `BufferedSocket.recv_until`, `JSONLIterator`), where a single wrong constant or operator changes internal bookkeeping rather than an obvious return value. Neither better retrieval nor three attempts was enough for these.

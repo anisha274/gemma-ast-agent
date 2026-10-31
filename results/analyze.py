@@ -92,3 +92,11 @@ for m, name in MODELS.items():
         s = D["summary"][m][c]
         print(f"| {c} | {name} | {s['tokens_per_task']} | {s['model_s_per_task']} | "
               f"{s['tokens_per_task'] / base:.2f}x |")
+
+print("\n## What each attempt produced (Gemma 4 E4B)\n")
+print("| Condition | Attempts | Passed | Applied, tests fail | Could not apply | No edit block |")
+print("|---|---|---|---|---|---|")
+for c, v in D["attempt_outcomes_e4b"].items():
+    if c.startswith("_"):
+        continue
+    print(f"| {c} | {v['attempts']} | {v['passed']} | {v['applied_but_tests_fail']} | {v['apply_errors']} | {v['no_edit_blocks']} |")

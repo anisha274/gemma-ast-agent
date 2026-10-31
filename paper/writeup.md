@@ -35,7 +35,7 @@ Every non-test `.py` file is parsed with Python's `ast` module. Each top-level f
 
 All retrievers return code chunks and pack them greedily by score into the same budget (about 6,000 tokens, estimated at 4 characters per token), then present them in file order.
 
-- **file (baseline):** BM25 over whole files; the last file is truncated to fit.
+- **file (baseline):** BM25 [5] over whole files; the last file is truncated to fit.
 - **ast_graph:** BM25 over symbols. Tokenization keeps identifiers and also splits them (`parse_url` gives `parse`, `url`), and symbol names are weighted three times. A symbol gets a bonus if the issue names it, and a larger bonus if it appears in a traceback frame. The top three symbols are then expanded to their callers and callees at half their score.
 - **oracle:** the gold (mutated) function first, with the rest filled by `ast_graph`. This is an upper bound on localization, not on repair.
 
@@ -43,7 +43,7 @@ The prompt also lists the repository's file paths (up to 80).
 
 ### 2.3 Patch format and application
 
-The model answers with a short root-cause note and one or more SEARCH/REPLACE blocks (the format popularized by the Aider coding assistant). Blocks are applied atomically: an exact unique match first, then a whitespace-insensitive match with re-indentation. Nothing is written if any block fails, edits a test file, escapes the repository, or produces a `SyntaxError`, and each failure is explained back to the model.
+The model answers with a short root-cause note and one or more SEARCH/REPLACE blocks (the format popularized by the Aider coding assistant [7]). Blocks are applied atomically: an exact unique match first, then a whitespace-insensitive match with re-indentation. Nothing is written if any block fails, edits a test file, escapes the repository, or produces a `SyntaxError`, and each failure is explained back to the model.
 
 ### 2.4 Self-correction with traceback retrieval
 
@@ -51,7 +51,7 @@ If the patch applies but tests fail, the agent reverts the repository and sends 
 
 ## 3. Benchmark
 
-We needed many bugs with known locations in a codebase larger than the context budget, so we built a mutation-based generator in the spirit of mutation testing.
+We needed many bugs with known locations in a codebase larger than the context budget, so we built a mutation-based generator in the spirit of mutation testing [6].
 
 **Repository.** boltons 26.2.0, a pure-Python utility library of about 18,000 lines across many modules, with a fast pytest suite.
 
@@ -75,7 +75,7 @@ We needed many bugs with known locations in a codebase larger than the context b
 | oracle | gold symbol + AST | 1 | – |
 
 - **Metrics:** *resolved* means the full boltons test suite passes after the final patch. *File hit* and *symbol hit* mean the gold file, or the whole gold function, is in the initial context. We also record tokens and model time.
-- **Statistics:** Wilson 95% intervals; exact two-sided McNemar tests on paired tasks.
+- **Statistics:** Wilson 95% intervals [9]; exact two-sided McNemar tests [8] on paired tasks.
 - **Runtime:** 5.3 h (E2B) and 7.2 h (E4B) of wall-clock on 2× T4 for 250 runs each, including setup.
 
 ## 5. Results
@@ -133,7 +133,20 @@ We needed many bugs with known locations in a codebase larger than the context b
 
 ## 8. Related work
 
-SWE-bench established repository-level issue resolution as a benchmark for language-model agents. Agentless showed that a fixed localize-then-repair pipeline can compete with open-ended agents; our agent follows that structure at a much smaller model scale. Self-Debugging and Reflexion showed that execution feedback and self-reflection improve code generation; we isolate how much of the gain for small models comes from test feedback versus retrieval. Our benchmark construction borrows from mutation testing, and our retriever uses BM25 over syntax-tree units rather than files or fixed-size chunks.
+SWE-bench [1] established repository-level issue resolution as a benchmark for language-model agents. Agentless [2] showed that a fixed localize-then-repair pipeline can compete with open-ended agents; our agent follows that structure at a much smaller model scale. RepoCoder [10] retrieves repository context iteratively for code completion; we instead retrieve syntax-tree units under a fixed budget and measure localization directly. Self-Debugging [3] and Reflexion [4] showed that execution feedback and self-reflection improve code generation; we isolate how much of the gain for small models comes from test feedback versus retrieval. Our benchmark construction borrows from mutation testing [6], and our retriever applies BM25 [5] to syntax-tree units rather than files or fixed-size chunks.
+
+## References
+
+[1] C. E. Jimenez, J. Yang, A. Wettig, S. Yao, K. Pei, O. Press, K. Narasimhan. SWE-bench: Can Language Models Resolve Real-World GitHub Issues? ICLR 2024.  
+[2] C. S. Xia, Y. Deng, S. Dunn, L. Zhang. Agentless: Demystifying LLM-based Software Engineering Agents. arXiv:2407.01489, 2024.  
+[3] X. Chen, M. Lin, N. Schärli, D. Zhou. Teaching Large Language Models to Self-Debug. ICLR 2024.  
+[4] N. Shinn, F. Cassano, A. Gopinath, K. Narasimhan, S. Yao. Reflexion: Language Agents with Verbal Reinforcement Learning. NeurIPS 2023.  
+[5] S. Robertson, H. Zaragoza. The Probabilistic Relevance Framework: BM25 and Beyond. Foundations and Trends in Information Retrieval 3(4), 2009.  
+[6] R. A. DeMillo, R. J. Lipton, F. G. Sayward. Hints on Test Data Selection: Help for the Practicing Programmer. IEEE Computer 11(4), 1978.  
+[7] P. Gauthier. Aider: AI pair programming in your terminal. https://aider.chat  
+[8] Q. McNemar. Note on the Sampling Error of the Difference Between Correlated Proportions or Percentages. Psychometrika 12(2), 1947.  
+[9] E. B. Wilson. Probable Inference, the Law of Succession, and Statistical Inference. Journal of the American Statistical Association 22(158), 1927.  
+[10] F. Zhang, B. Chen, Y. Zhang, J. Keung, J. Liu, D. Zan, Y. Mao, J.-G. Lou, W. Chen. RepoCoder: Repository-Level Code Completion Through Iterative Retrieval and Generation. EMNLP 2023.  
 
 ## 9. Reproducibility
 

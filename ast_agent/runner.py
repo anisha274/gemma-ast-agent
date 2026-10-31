@@ -32,7 +32,10 @@ def _kill_group(proc: subprocess.Popen) -> None:
 def run_tests(cmd: str, cwd: str, timeout: int = 300, tail_chars: int = 4000) -> TestResult:
     env = dict(os.environ)
     env["PYTHONDONTWRITEBYTECODE"] = "1"
-    env["PYTHONPATH"] = cwd + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
+    # Import the working copy, not an installed package: put "<repo>/src" (src layout) and
+    # "<repo>" first on the path, so planted bugs and patches are what the tests exercise.
+    paths = [p for p in (os.path.join(cwd, "src"), cwd) if os.path.isdir(p)]
+    env["PYTHONPATH"] = os.pathsep.join(paths + ([env["PYTHONPATH"]] if env.get("PYTHONPATH") else []))
     # Use the same interpreter that runs the agent, so `python -m pytest` works in venvs/notebooks.
     if cmd.startswith("python "):
         cmd = f'"{sys.executable}" ' + cmd[len("python "):]

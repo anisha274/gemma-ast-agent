@@ -207,6 +207,18 @@ def test_timeout_kills_hanging_grandchild(tmp_path):
     assert time.time() - t0 < 15          # the old version waited forever here
 
 
+def test_src_layout_imports_working_copy(tmp_path):
+    from ast_agent.runner import run_tests
+
+    pkg = tmp_path / "src" / "srcpkg_demo"
+    pkg.mkdir(parents=True)
+    (pkg / "__init__.py").write_text("VALUE = 41\n")
+    (tmp_path / "check.py").write_text("import srcpkg_demo, sys\nsys.exit(0 if srcpkg_demo.VALUE == 41 else 1)\n")
+    assert run_tests("python check.py", str(tmp_path), timeout=30).passed
+    (pkg / "__init__.py").write_text("VALUE = 42\n")          # a planted change must be seen
+    assert not run_tests("python check.py", str(tmp_path), timeout=30).passed
+
+
 # ---------------------------------------------------------------- stats
 def test_statistics():
     lo, hi = wilson(17, 17)

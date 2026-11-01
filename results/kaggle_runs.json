@@ -291,5 +291,139 @@
       "apply_errors": 5,
       "no_edit_blocks": 1
     }
+  },
+  "second_library": {
+    "_source": "Transcribed from the Kaggle run log of notebook anishamehajabin/gemma-ast-agent-second-library-experiment (Version 1, 31,069 s, GPU T4 x2, code commit 35997dc). click 8.5.0 and dateutil 3.0.0 were skipped automatically because pytest failed to start in that environment (plugin load error); more-itertools v11.2.1 passed its own tests and was used. Known-fix check: 50/50 resolved.",
+    "library": "more-itertools v11.2.1 (more.py 5,644 lines, recipes.py 1,617 lines; 38 bugs in more.py, 12 in recipes.py)",
+    "model": "gemma-4-e4b-it",
+    "summary": {
+      "file": {
+        "tokens_per_task": 8029,
+        "model_s_per_task": 72.7,
+        "file_hit": 0.88,
+        "symbol_hit": 0.04
+      },
+      "ast_graph": {
+        "tokens_per_task": 8941,
+        "model_s_per_task": 55.0,
+        "file_hit": 1.0,
+        "symbol_hit": 0.9
+      },
+      "full": {
+        "tokens_per_task": 24773,
+        "model_s_per_task": 151.7,
+        "file_hit": 1.0,
+        "symbol_hit": 0.9
+      },
+      "oracle": {
+        "tokens_per_task": 8848,
+        "model_s_per_task": 49.1,
+        "file_hit": 1.0,
+        "symbol_hit": 1.0
+      }
+    },
+    "resolved": {
+      "file": {
+        "19": 1
+      },
+      "ast_graph": {
+        "2": 1,
+        "17": 1,
+        "19": 1,
+        "22": 1,
+        "25": 1,
+        "28": 1,
+        "29": 1,
+        "34": 1,
+        "37": 1,
+        "44": 1,
+        "45": 1
+      },
+      "full": {
+        "1": 2,
+        "2": 1,
+        "4": 3,
+        "8": 2,
+        "13": 2,
+        "17": 1,
+        "19": 1,
+        "22": 1,
+        "25": 1,
+        "27": 2,
+        "28": 1,
+        "29": 1,
+        "31": 2,
+        "34": 1,
+        "37": 1,
+        "38": 3,
+        "44": 1,
+        "45": 1
+      },
+      "oracle": {
+        "2": 1,
+        "13": 1,
+        "17": 1,
+        "19": 1,
+        "22": 1,
+        "27": 1,
+        "28": 1,
+        "29": 1,
+        "42": 1,
+        "44": 1,
+        "45": 1
+      }
+    },
+    "task_kinds": {
+      "1": "boolean",
+      "2": "constant",
+      "3": "compare",
+      "4": "constant",
+      "5": "arith",
+      "6": "arith",
+      "7": "arith",
+      "8": "constant",
+      "9": "constant",
+      "10": "constant",
+      "11": "arith",
+      "12": "compare",
+      "13": "constant",
+      "14": "constant",
+      "15": "constant",
+      "16": "arith",
+      "17": "arith",
+      "18": "constant",
+      "19": "arith",
+      "20": "constant",
+      "21": "constant",
+      "22": "arith",
+      "23": "arith",
+      "24": "constant",
+      "25": "constant",
+      "26": "constant",
+      "27": "negation",
+      "28": "constant",
+      "29": "constant",
+      "30": "negation",
+      "31": "boolean",
+      "32": "constant",
+      "33": "arith",
+      "34": "compare",
+      "35": "compare",
+      "36": "arith",
+      "37": "arith",
+      "38": "constant",
+      "39": "constant",
+      "40": "compare",
+      "41": "negation",
+      "42": "constant",
+      "43": "arith",
+      "44": "arith",
+      "45": "constant",
+      "46": "constant",
+      "47": "arith",
+      "48": "compare",
+      "49": "compare",
+      "50": "constant"
+    }
   }
 }

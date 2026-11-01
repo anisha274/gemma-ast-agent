@@ -100,3 +100,17 @@ for c, v in D["attempt_outcomes_e4b"].items():
     if c.startswith("_"):
         continue
     print(f"| {c} | {v['attempts']} | {v['passed']} | {v['applied_but_tests_fail']} | {v['apply_errors']} | {v['no_edit_blocks']} |")
+
+print("\n## Second library: more-itertools (Gemma 4 E4B)\n")
+L = D["second_library"]
+sol = lambda c: {int(k) for k in L["resolved"][c]}
+print("| Condition | Resolved | Resolve % [95% CI] | Symbol hit | Tokens / task |")
+print("|---|---|---|---|---|")
+for c in ("file", "ast_graph", "full", "oracle"):
+    k = len(sol(c)); lo, hi = wilson(k, N); s = L["summary"][c]
+    print(f"| {c} | {k}/50 | {pct(k / N)} [{pct(lo)}-{pct(hi)}] | {pct(s['symbol_hit'])} | {s['tokens_per_task']} |")
+print("\n| A -> B | only A | only B | p |")
+print("|---|---|---|---|")
+for a_, b_ in [("file", "ast_graph"), ("ast_graph", "full"), ("file", "full"), ("oracle", "full"), ("ast_graph", "oracle")]:
+    x, y = sol(a_), sol(b_)
+    print(f"| {a_} -> {b_} | {len(x - y)} | {len(y - x)} | {mcnemar_exact(len(x - y), len(y - x)):.4f} |")

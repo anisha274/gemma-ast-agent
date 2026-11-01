@@ -26,6 +26,17 @@ Every component can be switched off, so each one gets its own row in the results
 | oracle (gold function shown, 1 attempt) | 6% | 34% | 100% |
 
 AST retrieval localizes better, but test-driven self-correction is what raises the fix rate (E4B: 26% → 42%, exact McNemar p = 0.008).
+
+**Second library:** 50 bugs planted in [more-itertools](https://github.com/more-itertools/more-itertools) 11.2.1 (one 5,644-line module), Gemma 4 E4B, same budget ([`notebooks/run_kaggle_second_library.ipynb`](notebooks/run_kaggle_second_library.ipynb)):
+
+| Condition | Gemma 4 E4B | Buggy function in context |
+|---|---|---|
+| file | 2% | 4% |
+| ast_graph | 22% | 90% |
+| **full** | **36%** | 90% |
+| oracle | 22% | 100% |
+
+Here whole files are truncated before the bug, so AST retrieval matters (2% → 22%, p = 0.002), and self-correction again adds a significant gain (22% → 36%, p = 0.016), beating the oracle (p = 0.039).
 Every task outcome is in [`results/kaggle_runs.json`](results/kaggle_runs.json); `python results/analyze.py` regenerates all numbers ([`results/analysis.md`](results/analysis.md)).
 
 ## Layout

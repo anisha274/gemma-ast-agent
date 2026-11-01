@@ -54,6 +54,8 @@ benchmarks/sample/   tiny library + 17 generated tasks (smoke test)
 tests/               unit + end-to-end tests (no GPU needed)
 ```
 
+**New to the code?** [`notebooks/beginners_guide.ipynb`](notebooks/beginners_guide.ipynb) explains every function in plain English, with a runnable demo for each part (no GPU, about one minute).
+
 ## Quick start (no GPU)
 
 ```bash

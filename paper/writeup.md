@@ -4,7 +4,7 @@
 
 **Code:** https://github.com/anisha274/gemma-ast-agent (Apache-2.0)
 
-**Runs:** Kaggle notebook *Localizing Gemma 4 Agents via AST-Guided Retrieval*: Version 3 (Gemma 4 E2B) and Version 4 (Gemma 4 E4B); second library: notebook *gemma-ast-agent-second-library-experiment*, Version 1
+**Runs:** Kaggle notebook *Localizing Gemma 4 Agents via AST-Guided Retrieval*: Version 3 (Gemma 4 E2B) and Version 4 (Gemma 4 E4B); second library: notebook *Gemma AST Agent - Second Library Experiment*, Version 1
 
 ## Abstract
 

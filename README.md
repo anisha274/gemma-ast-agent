@@ -11,7 +11,7 @@ A small, dependency-free bug-fixing agent for **local** Gemma 4 models:
 
 Every component can be switched off, so each one gets its own row in the results table.
 
-**Paper:** [`paper/writeup.md`](paper/writeup.md)  ·  **Video (3:37):** https://youtu.be/rjQykj8VPfE
+**Paper:** [`paper/writeup.md`](paper/writeup.md)  ·  **Video (4:05):** https://youtu.be/E8VtsAhGYNA
 
 ## Results
 

@@ -27,6 +27,12 @@ Our contributions:
 
 The agent is about 1,500 lines of dependency-free Python (plus `transformers` for inference): retrieve, generate a patch, apply it, run the tests, and optionally self-correct.
 
+Figure 1 summarizes the information flow and marks which stages each experimental condition changes.
+
+![Figure 1: agent workflow from issue to patch](https://raw.githubusercontent.com/anisha274/gemma-ast-agent/main/paper/figures/figure1_workflow.gif)
+
+**Figure 1. Agent workflow from issue to patch.** Blue stages (①–②) form AST-guided retrieval; orange paths form test-driven self-correction (solid: failing tests, up to three attempts; dashed: rejected edits). The experimental conditions switch parts off: *file* replaces ①–② with whole-file BM25, single-attempt conditions omit the solid loop, *ast_graph_sc* sends no traceback code, and *oracle* always includes the buggy function in ②. A static version is in `paper/figures/figure1_workflow.png`.
+
 ### 2.1 AST index
 
 Every non-test `.py` file is parsed with Python's `ast` module. Each top-level function, method and class becomes a *symbol* with exact line ranges, its docstring, and the set of names it calls. Classes are represented by an *outline* (header, class-level statements, and method signatures), and each module by a *header* (imports and constants), so the model can see structure without whole bodies. Nested functions stay inside their parent.

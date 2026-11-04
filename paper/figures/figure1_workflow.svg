@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="640" viewBox="0 0 1600 640" font-family="Liberation Serif, Times New Roman, serif">
+<defs>
+<marker id="aG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2d3748"/></marker>
+<marker id="aO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c05621"/></marker>
+</defs><rect width="1600" height="640" fill="#fff"/>
+<rect x="20" y="110" width="222" height="230" rx="12" fill="#f5f5f5" stroke="#4a5568" stroke-width="2.5"/>
+<text x="131.0" y="152" text-anchor="middle" font-size="28" fill="#4a5568" font-weight="bold">Input</text>
+<text x="131.0" y="196" text-anchor="middle" font-size="25" fill="#1a202c">Issue (failing</text>
+<text x="131.0" y="228" text-anchor="middle" font-size="25" fill="#1a202c">tests)</text>
+<text x="131.0" y="260" text-anchor="middle" font-size="25" fill="#1a202c">Repository</text>
+<text x="131.0" y="292" text-anchor="middle" font-size="25" fill="#1a202c">Test command</text>
+<rect x="282" y="110" width="222" height="230" rx="12" fill="#e9f1fb" stroke="#2b6cb0" stroke-width="2.5"/>
+<text x="393.0" y="152" text-anchor="middle" font-size="28" fill="#2b6cb0" font-weight="bold">① AST index</text>
+<text x="393.0" y="196" text-anchor="middle" font-size="25" fill="#1a202c">Functions,</text>
+<text x="393.0" y="228" text-anchor="middle" font-size="25" fill="#1a202c">methods, class</text>
+<text x="393.0" y="260" text-anchor="middle" font-size="25" fill="#1a202c">outlines</text>
+<text x="393.0" y="292" text-anchor="middle" font-size="25" fill="#1a202c">+ call graph</text>
+<rect x="544" y="110" width="222" height="230" rx="12" fill="#e9f1fb" stroke="#2b6cb0" stroke-width="2.5"/>
+<text x="655.0" y="152" text-anchor="middle" font-size="28" fill="#2b6cb0" font-weight="bold">② Retrieval</text>
+<text x="655.0" y="196" text-anchor="middle" font-size="25" fill="#1a202c">BM25 + issue /</text>
+<text x="655.0" y="228" text-anchor="middle" font-size="25" fill="#1a202c">traceback boosts</text>
+<text x="655.0" y="260" text-anchor="middle" font-size="25" fill="#1a202c">+ call-graph</text>
+<text x="655.0" y="292" text-anchor="middle" font-size="25" fill="#1a202c">≤ 6,000 tokens</text>
+<rect x="806" y="110" width="222" height="230" rx="12" fill="#f5f5f5" stroke="#4a5568" stroke-width="2.5"/>
+<text x="917.0" y="152" text-anchor="middle" font-size="28" fill="#4a5568" font-weight="bold">③ Gemma 4</text>
+<text x="917.0" y="196" text-anchor="middle" font-size="25" fill="#1a202c">E2B or E4B</text>
+<text x="917.0" y="228" text-anchor="middle" font-size="25" fill="#1a202c">greedy decoding</text>
+<text x="917.0" y="260" text-anchor="middle" font-size="25" fill="#1a202c">→ SEARCH/</text>
+<text x="917.0" y="292" text-anchor="middle" font-size="25" fill="#1a202c">REPLACE edits</text>
+<rect x="1068" y="110" width="222" height="230" rx="12" fill="#f5f5f5" stroke="#4a5568" stroke-width="2.5"/>
+<text x="1179.0" y="152" text-anchor="middle" font-size="28" fill="#4a5568" font-weight="bold">④ Apply edits</text>
+<text x="1179.0" y="196" text-anchor="middle" font-size="25" fill="#1a202c">Atomic,</text>
+<text x="1179.0" y="228" text-anchor="middle" font-size="25" fill="#1a202c">syntax-checked;</text>
+<text x="1179.0" y="260" text-anchor="middle" font-size="25" fill="#1a202c">tests are</text>
+<text x="1179.0" y="292" text-anchor="middle" font-size="25" fill="#1a202c">read-only</text>
+<rect x="1330" y="110" width="222" height="230" rx="12" fill="#f5f5f5" stroke="#4a5568" stroke-width="2.5"/>
+<text x="1441.0" y="152" text-anchor="middle" font-size="28" fill="#4a5568" font-weight="bold">⑤ Run tests</text>
+<text x="1441.0" y="196" text-anchor="middle" font-size="25" fill="#1a202c">Library’s own</text>
+<text x="1441.0" y="228" text-anchor="middle" font-size="25" fill="#1a202c">test suite</text>
+<text x="1441.0" y="260" text-anchor="middle" font-size="25" fill="#1a202c">Pass →</text>
+<text x="1441.0" y="292" text-anchor="middle" font-size="25" fill="#1a202c">output patch</text>
+<path d="M 244,225.0 L 275,225.0" fill="none" stroke="#2d3748" stroke-width="2.8" marker-end="url(#aG)"/>
+<path d="M 506,225.0 L 537,225.0" fill="none" stroke="#2d3748" stroke-width="2.8" marker-end="url(#aG)"/>
+<path d="M 768,225.0 L 799,225.0" fill="none" stroke="#2d3748" stroke-width="2.8" marker-end="url(#aG)"/>
+<path d="M 1030,225.0 L 1061,225.0" fill="none" stroke="#2d3748" stroke-width="2.8" marker-end="url(#aG)"/>
+<path d="M 1292,225.0 L 1323,225.0" fill="none" stroke="#2d3748" stroke-width="2.8" marker-end="url(#aG)"/>
+<path d="M 1179.0,108 L 1179.0,62 L 917.0,62 L 917.0,101" fill="none" stroke="#c05621" stroke-width="2.8" stroke-dasharray="10 7" marker-end="url(#aO)"/>
+<text x="1048.0" y="50" text-anchor="middle" font-size="23" fill="#c05621" font-style="italic">edit rejected → error message</text>
+<path d="M 1441.0,342 L 1441.0,455 L 1408.0,455" fill="none" stroke="#c05621" stroke-width="3" marker-end="url(#aO)"/>
+<rect x="796" y="400.0" width="605.0" height="110" rx="12" fill="#fdf1e5" stroke="#c05621" stroke-width="2.5"/>
+<text x="1098.5" y="437" text-anchor="middle" font-size="25" fill="#c05621" font-weight="bold">Self-correction: tests fail and attempt &lt; 3</text>
+<text x="1098.5" y="475" text-anchor="middle" font-size="23" fill="#1a202c">reset; send diff + test output + unseen traceback code</text>
+<path d="M 917.0,399.0 L 917.0,349" fill="none" stroke="#c05621" stroke-width="3" marker-end="url(#aO)"/>
+<text x="1453.0" y="390" text-anchor="start" font-size="22" fill="#c05621" font-style="italic">fail</text>
+<rect x="20" y="580" width="30" height="22" rx="4" fill="#e9f1fb" stroke="#2b6cb0" stroke-width="2.2"/>
+<text x="60" y="600" text-anchor="start" font-size="23" fill="#1a202c">AST-guided retrieval</text>
+<rect x="380" y="580" width="30" height="22" rx="4" fill="#fdf1e5" stroke="#c05621" stroke-width="2.2"/>
+<text x="420" y="600" text-anchor="start" font-size="23" fill="#1a202c">Test-driven self-correction</text>
+<rect x="820" y="580" width="30" height="22" rx="4" fill="#f5f5f5" stroke="#4a5568" stroke-width="2.2"/>
+<text x="860" y="600" text-anchor="start" font-size="23" fill="#1a202c">Standard components</text></svg>

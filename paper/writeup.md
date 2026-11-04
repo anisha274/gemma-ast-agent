@@ -31,7 +31,7 @@ Figure 1 summarizes the information flow and marks which stages each experimenta
 
 ![Figure 1: agent workflow from issue to patch](https://raw.githubusercontent.com/anisha274/gemma-ast-agent/main/paper/figures/figure1_workflow.gif)
 
-**Figure 1. Agent workflow from issue to patch.** Blue stages (①–②) form AST-guided retrieval; orange paths form test-driven self-correction (solid: failing tests, up to three attempts; dashed: rejected edits). The experimental conditions switch parts off: *file* replaces ①–② with whole-file BM25, single-attempt conditions omit the solid loop, *ast_graph_sc* sends no traceback code, and *oracle* always includes the buggy function in ②. A static version is in `paper/figures/figure1_workflow.png`.
+**Figure 1. Agent workflow from issue to patch.** Blue stages (①–②) form AST-guided retrieval; orange paths form test-driven self-correction (solid: failing tests, up to three attempts; dashed: rejected edits). The experimental conditions switch parts off: *file* replaces ①–② with whole-file BM25, single-attempt conditions omit the solid loop, *ast_graph_sc* sends no traceback code, and *oracle* always includes the buggy function in ②.
 
 ### 2.1 AST index
 

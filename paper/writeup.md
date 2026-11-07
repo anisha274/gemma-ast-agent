@@ -12,7 +12,7 @@ Small open models can run coding agents on free or local hardware, but their sho
 
 ## 1. Introduction
 
-Coding agents usually rely on large hosted models. An agent that runs offline, cheaply, or on private code needs a small open model, and the bottleneck is context: a few thousand tokens cannot hold a repository, so the agent must choose what to show.
+Coding agents usually rely on large hosted models. An agent that runs offline, cheaply, or on private code needs a small open model, and the bottleneck is context: a few thousand tokens cannot hold a repository, so the agent must choose what to show. The Gemma 4 Developer Agent Paper Track frames exactly this setting: autonomous agents that fix real software issues offline, on consumer hardware [11].
 
 A common answer is better retrieval. If the model sees the right function, the reasoning goes, it will fix it. We test that assumption with Gemma 4 E2B and E4B on Kaggle's free 2× T4 GPUs, comparing whole-file and structure-aware retrieval at the *same* token budget against an oracle that is always shown the buggy function. We then add cheap information that does not depend on retrieval: the test suite.
 
@@ -172,6 +172,7 @@ SWE-bench [1] established repository-level issue resolution as an agent benchmar
 [8] Q. McNemar. Note on the Sampling Error of the Difference Between Correlated Proportions or Percentages. Psychometrika 12(2), 1947.  
 [9] E. B. Wilson. Probable Inference, the Law of Succession, and Statistical Inference. Journal of the American Statistical Association 22(158), 1927.  
 [10] F. Zhang et al. RepoCoder: Repository-Level Code Completion Through Iterative Retrieval and Generation. EMNLP 2023.  
+[11] E. Markowitz et al. Google - The Gemma 4 Developer Agent Paper Track. Kaggle, 2026. https://www.kaggle.com/competitions/gemma-4-developer-agent-paper  
 
 ## 9. Reproducibility
 
